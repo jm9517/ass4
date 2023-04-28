@@ -57,10 +57,7 @@ class ProductScrollingActivity : AppCompatActivity(), SensorEventListener, Locat
             }
             startActivity(intent)
         }
-        //var productList: List<Product?>? = null // //Fix for Part 3.3 by adding HTTPs
-        //var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("https://appsecclass.report").addConverterFactory(
-          //      GsonConverterFactory.create())
-        //var retrofit: Retrofit = builder.build()
+       
         var client: ProductInterface = retrofit.create(ProductInterface::class.java)
         val outerContext = this
         var manager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
