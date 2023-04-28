@@ -8,6 +8,5 @@ import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface UserInfo {
-    //@POST("/api/metrics") this is not neccesary and it collects data
-    //fun postInfo(@Body info: UserInfoContainer, @Header("Authorization") token: String?) : Call<User>
+   
 }
