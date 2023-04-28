@@ -1,0 +1,5 @@
+ @PUT("/api/use/{card_number}")
+    fun useCard(@Path("card_number") card_number: Int?, @Header("Authorization") authHeader: String): Call<Card?>
+
+the useCard() method is vulnerable because it does not validate the autHeader parameter. This can allow an attacker to used a Giftcard that do not belong to him/her. This is in someways similar to Assignment 2.1. \
+One way to fix this vulnerabiltiy is by validating the authHeader parameter in order to check and ensure is valid for the card number that is passed. If the authorization is not valid, it should display an error message. }
