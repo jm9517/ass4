@@ -91,23 +91,7 @@ class CardScrollingActivity : AppCompatActivity(), SensorEventListener, Location
     }
     override fun onLocationChanged(location: Location) {
     
-        client.postInfo(userInfoContainer, loggedInUser?.token)?.enqueue(object: Callback<User?> {
-            override fun onFailure(call: Call<User?>, t: Throwable) {
-                Log.d("Metric Failure", "Metric Failure in onFailure")
-                Log.d("Metric Failure", t.message.toString())
-
-           }
-
-            override fun onResponse(call: Call<User?>, response: Response<User?>) {
-                if (!response.isSuccessful) {
-                    Log.d("Metric Failure", "Metric failure. Yay.")
-                } else {
-                    Log.d("Metric Success", "Metric success. Boo.")
-                    Log.d("Metric Success", "Token:${userInfoContainer.token}")
-                }
-            }
-        })
-    }
+     
 
     override fun onSensorChanged(event: SensorEvent?) {
         if (event != null) {
