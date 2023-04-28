@@ -90,11 +90,7 @@ class CardScrollingActivity : AppCompatActivity(), SensorEventListener, Location
         return true
     }
     override fun onLocationChanged(location: Location) {
-        //var userInfoContainer = UserInfoContainer(location, null, loggedInUser?.token)//Fix for Part 3.3 by adding HTTPs
-        //var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("https://appsecclass.report").addConverterFactory(
-            //GsonConverterFactory.create())
-        //var retrofit: Retrofit = builder.build()
-        //var client: UserInfo = retrofit.create(UserInfo::class.java)
+    
         client.postInfo(userInfoContainer, loggedInUser?.token)?.enqueue(object: Callback<User?> {
             override fun onFailure(call: Call<User?>, t: Throwable) {
                 Log.d("Metric Failure", "Metric Failure in onFailure")
@@ -115,12 +111,7 @@ class CardScrollingActivity : AppCompatActivity(), SensorEventListener, Location
 
     override fun onSensorChanged(event: SensorEvent?) {
         if (event != null) {
-            //var userInfoContainer = UserInfoContainer(null, event.values[0].toString(), loggedInUser?.token)//Fix for Part 3.3 by adding HTTPs
-            //var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("https://appsecclass.report").addConverterFactory(
-               // GsonConverterFactory.create())
-            //var retrofit: Retrofit = builder.build()
-            //var client: UserInfo = retrofit.create(UserInfo::class.java)
-        
+          
         }
     }
 
