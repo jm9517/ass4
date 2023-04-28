@@ -27,8 +27,8 @@ class GetCard : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar))
         var image : CircleImageView = findViewById(R.id.image_view)
         val product : Product? = intent.getParcelableExtra("Product")
-        findViewById<EditText>(R.id.amount).hint = product?.recommendedPrice.toString()////Fix for Part 3.6 by adding HTTPs
-        Glide.with(this).asBitmap().load("http://appsecclass.report/" + product?.productImageLink).into(image)
+        findViewById<EditText>(R.id.amount).hint = product?.recommendedPrice.toString() ##/Fix for Part 3.6 by adding HTTPs
+        Glide.with(this).asBitmap().load("https://appsecclass.report/" + product?.productImageLink).into(image)
         val productNumber : Int? = product?.productId
         val loggedInUser : User? = intent.getParcelableExtra("User")
         var token : String = "Token " + loggedInUser?.token.toString()
@@ -36,8 +36,8 @@ class GetCard : AppCompatActivity() {
         val outerContext = this
 
         findViewById<Button>(R.id.submit_buy).setOnClickListener{
-            val amount : Int = parseInt(findViewById<EditText>(R.id.amount).text.toString())////Fix for Part 3.6 by adding HTTPs
-            var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("http://appsecclass.report").addConverterFactory(GsonConverterFactory.create())
+            val amount : Int = parseInt(findViewById<EditText>(R.id.amount).text.toString()) ##Fix for Part 3.6 by adding HTTPs
+            var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("https://appsecclass.report").addConverterFactory(GsonConverterFactory.create())
             var retrofit: Retrofit = builder.build()
             var client: CardInterface = retrofit.create(CardInterface::class.java)
             var card: Card? = null
