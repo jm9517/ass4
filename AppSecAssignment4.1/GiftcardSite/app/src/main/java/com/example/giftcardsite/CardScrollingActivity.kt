@@ -55,11 +55,7 @@ class CardScrollingActivity : AppCompatActivity(), SensorEventListener, Location
                 putExtra("User", loggedInUser)
             }
             startActivity(intent)
-        } //Fix for Part 3.3 by adding HTTPs####
-        //var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("https://appsecclass.report").addConverterFactory(
-            //GsonConverterFactory.create())
-        //var retrofit: Retrofit = builder.build()
-        //var client: CardInterface = retrofit.create(CardInterface::class.java)
+        } 
         val outerContext = this
         var manager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         var recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
