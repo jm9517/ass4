@@ -31,20 +31,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class CardScrollingActivity : AppCompatActivity(), SensorEventListener, LocationListener {
     private var loggedInUser : User? = null
-    private lateinit var sensorManager: SensorManager
-    private var mAccel: Sensor? = null;
+ 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //val locationPermissionCode = 2
-        var locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        if ((ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)) {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), locationPermissionCode)
-        }
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 5f, this)
-        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        mAccel = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+    
         setContentView(R.layout.activity_scrolling)
         setSupportActionBar(findViewById(R.id.toolbar))
         loggedInUser = intent.getParcelableExtra<User>("User")
@@ -55,7 +47,11 @@ class CardScrollingActivity : AppCompatActivity(), SensorEventListener, Location
                 putExtra("User", loggedInUser)
             }
             startActivity(intent)
-        } 
+        }
+        var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("https://nyuappsec.com").addConverterFactory(
+            GsonConverterFactory.create())
+        var retrofit: Retrofit = builder.build()
+        var client: CardInterface = retrofit.create(CardInterface::class.java)
         val outerContext = this
         var manager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         var recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
@@ -89,31 +85,16 @@ class CardScrollingActivity : AppCompatActivity(), SensorEventListener, Location
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
-    override fun onLocationChanged(location: Location) {
-    
-     
 
-    override fun onSensorChanged(event: SensorEvent?) {
-        if (event != null) {
-          
-        }
+
+            }
+
+                }
+            }
+        })
     }
 
-    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
-        return
-    }
-
-    override fun onResume() {
-        super.onResume()
-        mAccel?.also { accel ->
-            sensorManager.registerListener(this, accel, SensorManager.SENSOR_DELAY_NORMAL)
-        }
-    }
-
-    override fun onPause() {
-        super.onPause()
-        sensorManager.unregisterListener(this)
-    }
+}
 
 
 }
