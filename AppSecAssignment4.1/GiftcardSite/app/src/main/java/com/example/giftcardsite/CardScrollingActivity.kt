@@ -31,12 +31,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class CardScrollingActivity : AppCompatActivity(), SensorEventListener, LocationListener {
     private var loggedInUser : User? = null
- 
+  
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-    
+   
         setContentView(R.layout.activity_scrolling)
         setSupportActionBar(findViewById(R.id.toolbar))
         loggedInUser = intent.getParcelableExtra<User>("User")
@@ -85,16 +85,14 @@ class CardScrollingActivity : AppCompatActivity(), SensorEventListener, Location
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
-
+    
 
             }
 
+          
                 }
             }
         })
     }
-
-}
-
 
 }
